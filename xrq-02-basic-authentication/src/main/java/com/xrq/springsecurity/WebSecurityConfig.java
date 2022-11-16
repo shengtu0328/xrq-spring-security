@@ -19,6 +19,7 @@ public class WebSecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		//禁用session
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http
 				.authorizeHttpRequests((requests) -> requests

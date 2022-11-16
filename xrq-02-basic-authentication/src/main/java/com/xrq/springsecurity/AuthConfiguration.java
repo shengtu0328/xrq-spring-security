@@ -1,16 +1,11 @@
 package com.xrq.springsecurity;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 
 @Configuration
 public class AuthConfiguration {
 
-      //此AuthenticationProvider 会替代DaoAuthenticationProvider
+      //如果配置了 此AuthenticationProvider 会替代DaoAuthenticationProvider
 //    @Bean
 //    public AuthenticationProvider authenticationProvider(){
 //
