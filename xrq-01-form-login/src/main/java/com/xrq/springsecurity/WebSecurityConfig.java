@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.util.UUID;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
@@ -24,6 +26,8 @@ public class WebSecurityConfig {
 				.antMatchers("/a").hasAuthority("admin")
 				.anyRequest().authenticated()
 			)
+			//开启记住我功能
+			.rememberMe((x)->x.key(UUID.randomUUID().toString()))
 			//表单登录
 			.formLogin((form) -> form
 				.loginPage("/xrqLoginPage")//没登录时，redirect的地址
