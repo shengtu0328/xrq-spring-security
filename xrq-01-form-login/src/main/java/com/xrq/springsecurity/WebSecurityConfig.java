@@ -22,9 +22,9 @@ public class WebSecurityConfig {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
 		http
 			.authorizeHttpRequests((requests) -> requests
-				.antMatchers("/", "/home").permitAll()
-				.antMatchers("/a").hasAuthority("admin")
-				.anyRequest().authenticated()
+				.antMatchers("/", "/home").permitAll()// "/","/home"不需要任何身份验
+				.antMatchers("/a").hasAuthority("admin")// "/a"需要有admin的权限
+				.anyRequest().authenticated()//其他的所有路径都必须经过身份验证
 			)
 			//开启记住我功能
 			.rememberMe((x)->x.key(UUID.randomUUID().toString()))
