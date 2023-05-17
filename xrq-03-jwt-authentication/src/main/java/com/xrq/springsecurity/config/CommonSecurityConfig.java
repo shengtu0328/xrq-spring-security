@@ -47,4 +47,15 @@ public class CommonSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    public static void main(String[] args) {
+
+        BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+        System.out.println(encoder.encode("123456"));
+        System.out.println(encoder.encode("123456"));
+
+        System.out.println(encoder.matches("123456", "$2a$10$6dbSwzaJ2TEOGbUQxfBIGuG7I2MDNEiXkhw4Z7uR944OAKA59q05u"));
+
+
+    }
+
 }
