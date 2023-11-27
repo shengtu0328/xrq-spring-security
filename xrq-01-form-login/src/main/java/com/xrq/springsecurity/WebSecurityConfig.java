@@ -10,6 +10,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import java.util.UUID;
 
@@ -48,7 +51,18 @@ public class WebSecurityConfig {
 
 		return http.build();
 	}
+	@Bean
+	public CorsFilter corsFilter() {
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
+		CorsConfiguration corsConfiguration = new CorsConfiguration();
+		corsConfiguration.addAllowedOriginPattern("*");
+		corsConfiguration.addAllowedHeader("*");
+		corsConfiguration.addAllowedMethod("*");
+		corsConfiguration.setAllowCredentials(true);
+		source.registerCorsConfiguration("/**", corsConfiguration);
+		return new CorsFilter(source);
+	}
 	@Bean
 	public UserDetailsService userDetailsService() {
 		UserDetails user =
